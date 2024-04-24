@@ -112,9 +112,9 @@ export class SidebarComponent
         } else if (userRole.includes('Client')) {
           this.sidebarItems = ROUTES.filter((item) => item.role.includes('Client'));
           this.userType = 'Client';
-        } else if (userRole.includes('Employe')) {
+        } else if (userRole.includes('Employee')) {
           this.sidebarItems = ROUTES.filter((item) => item.role.includes('Employee'));
-          this.userType = 'Employe';
+          this.userType = 'Employee';
         } else {
           this.sidebarItems = [];
           this.userType = 'Unknown';

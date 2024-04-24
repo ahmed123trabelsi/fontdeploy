@@ -24,7 +24,7 @@ export class TheMissionService extends UnsubscribeOnDestroyAdapter {
   assignUserToMission(missionId: string, useremail: string): Observable<Mission> {
     const data = { missionId, useremail };
 
-    return this.http.post<Mission>(`${this.baseUrl}/assign-user`, data);
+    return this.http.post<Mission>(`${this.baseUrl}`, data);
   }
   getDialogData() {
     return this.dialogData;

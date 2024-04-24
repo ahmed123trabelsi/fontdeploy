@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipGrid, MatChipInput, MatChipInputEvent, MatChipSelectionChange, MatChipsModule } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import Swal from 'sweetalert2';
 
 import { JobsListComponent } from '../../jobs-list.component';
 
@@ -235,7 +236,7 @@ export class FormDialogComponent {
       const formData = this.jobsListForm.value;
   
       if (this.action === 'add') {
-        // Logique pour ajouter un nouveau job
+        // Logic to add a new job
         const newJobsList: JobsList = {
           _id: formData.id,
           title: formData.title,
@@ -251,20 +252,30 @@ export class FormDialogComponent {
           applicants: formData.applicants
         };
   
-        // Appelez la méthode de service pour ajouter le nouveau job
-        this.jobsListService.addJob(newJobsList).subscribe(
-          (response) => {
+        // Call the service method to add the new job
+        this.jobsListService.addJob(newJobsList).subscribe({
+          next: (response) => {
             console.log('New job added successfully:', response);
-            alert('Job added successfully!');
-            this.dialogRef.close(); // Fermez le dialogue après l'ajout réussi
-           
+            Swal.fire({
+              icon: 'success',
+              title: 'Success',
+              text: 'Job added successfully!',
+              confirmButtonText: 'OK'
+            });
+            this.dialogRef.close(); // Close the dialog after successful addition
           },
-          (error) => {
+          error: (error) => {
             console.error('Error adding new job:', error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Failed to add job. Please try again.',
+              confirmButtonText: 'OK'
+            });
           }
-        );
+        });
       } else if (this.action === 'edit') {
-        // Logique pour modifier un job existant
+        // Logic to edit an existing job
         const updatedJobsList: JobsList = {
           _id: formData.id,
           title: formData.title,
@@ -280,23 +291,41 @@ export class FormDialogComponent {
           applicants: formData.applicants
         };
   
-        // Appelez la méthode de service pour mettre à jour le job existant
-        this.jobsListService.updateJob(updatedJobsList).subscribe(
-          (response) => {
+        // Call the service method to update the existing job
+        this.jobsListService.updateJob(updatedJobsList).subscribe({
+          next: (response) => {
             console.log('Job updated successfully:', response);
-            alert('Job updated successfully!');
-            this.dialogRef.close(); // Fermez le dialogue après la modification réussie
-          // this.JobsListComponent.refresh(); 
+            Swal.fire({
+              icon: 'success',
+              title: 'Updated',
+              text: 'Job updated successfully!',
+              confirmButtonText: 'OK'
+            });
+            this.dialogRef.close(); // Close the dialog after successful update
+            // this.JobsListComponent.refresh(); 
           },
-          (error) => {
+          error: (error) => {
             console.error('Error updating job:', error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Failed to update job. Please try again.',
+              confirmButtonText: 'OK'
+            });
           }
-        );
+        });
       }
     } else {
       console.error('Invalid form data. Please check the form.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid Form',
+        text: 'Please check the form and try again.',
+        confirmButtonText: 'OK'
+      });
     }
   }
+  
  
   addSkill(event: MatChipInputEvent): void {
     const input = event.input;

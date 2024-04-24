@@ -31,7 +31,7 @@ export class EmployeeSalaryService extends UnsubscribeOnDestroyAdapter {
   }
   getAllPayrollsWithUsersAndPoste(): void {
     this.subs.sink = this.httpClient
-      .get<EmployeeSalary[]>('http://localhost:3000/payroll/withUsersAndPoste')
+      .get<EmployeeSalary[]>('https://backdeploy-7y83.onrender.com/payroll/withUsersAndPoste')
       .subscribe({
         next: (data) => {
           this.isTblLoading = false;

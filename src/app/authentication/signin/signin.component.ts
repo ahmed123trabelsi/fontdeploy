@@ -82,7 +82,7 @@ export class SigninComponent
             const user = userData.user;
             console.log(user);
              // Déterminez la destination de la redirection en fonction du rôle de l'utilisateur
-          if (user.role.includes('Employe')) {
+          if (user.role.includes('Employee')) {
             // Redirection vers le tableau de bord de l'employé
             this.router.navigate(['/employee/dashboard']);
           } else if (user.role.includes('Client')) {

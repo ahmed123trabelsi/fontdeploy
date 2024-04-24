@@ -77,7 +77,7 @@ export class SignupComponent implements OnInit {
       password: this.password,
       roleName: this.roleName
     };
-    console.log(signupDto);
+  
 
     this.userservice.signUp(signupDto)
       .subscribe();

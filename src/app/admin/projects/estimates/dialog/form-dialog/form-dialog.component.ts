@@ -2,7 +2,7 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialogContent, MatDialogClose } from 
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { EstimatesService } from '../../estimates.service';
 import { UntypedFormControl, Validators, UntypedFormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
-
+import Swal from 'sweetalert2';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -176,43 +176,74 @@ this.user=datauser
     this.dialogRef.close();
   }
   public confirmAdd(): void {
-   
-  if(this.data.taskId){
-    this.updateT()
-    Object.assign(this.data.task, this.taskForm.value);
-  }else{
-    this.estimatesService.createTask2({
-      ...this.taskForm.value,
-      employeeAffected: this.idEmployee, // Replace the email with the userId
-    }).subscribe((newTask) => {
-
-this.data.tasks.push(newTask)
-
-this.dialogRef.close(this.data.tasks);
-    });
+    if (this.data.taskId) {
+      this.updateT();
+      Object.assign(this.data.task, this.taskForm.value);
+    } else {
+      this.estimatesService.createTask2({
+        ...this.taskForm.value,
+        employeeAffected: this.idEmployee, // Replace the email with the userId
+      }).subscribe({
+        next: (newTask) => {
+          this.data.tasks.push(newTask);
+          this.dialogRef.close(this.data.tasks);
+          // SweetAlert2 success message
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Task has been added successfully!',
+            confirmButtonText: 'OK'
+          });
+        },
+        error: (error) => {
+          // SweetAlert2 error message
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Failed to create task. Please try again.',
+            confirmButtonText: 'OK'
+          });
+        }
+      });
+    }
   }
-   }
   updateT() {
     const updatedValues = {
       _id: this.taskForm.value._id,
       NomTask: this.taskForm.value.NomTask,
       description: this.taskForm.value.description,
-      startDate:  this.taskForm.value.startDate,// Converts to string in specified format
-      FinishDate:  this.taskForm.value.FinishDate,
+      startDate: this.taskForm.value.startDate, // Converts to string in specified format
+      FinishDate: this.taskForm.value.FinishDate,
       statut: this.taskForm.value.statut,
       priority: this.taskForm.value.priority,
-      employeeAffected:this.idEmployee
-    
-  
-      // Incluez 'f' si vous ne le mettez pas à jour ici
+      employeeAffected: this.idEmployee
     };
   
-    this.estimatesService.updateTask(this.data.taskId, updatedValues).subscribe(() => {
-
-
+    this.estimatesService.updateTask(this.data.taskId, updatedValues).subscribe({
+      next: () => {
+        // Notify user of successful update
+        Swal.fire({
+          icon: 'success',
+          title: 'Updated',
+          text: 'Task updated successfully!',
+          confirmButtonText: 'OK'
+        });
+        // Optionally close dialog or refresh data here if needed
+        this.dialogRef.close(); // You can choose to close the dialog or refresh the component view
+      },
+      error: (error) => {
+        // Notify user of error
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Failed to update task. Please try again.',
+          confirmButtonText: 'OK'
+        });
+        console.error('Error updating task:', error);
+      }
     });
-
   }
+  
 
 }
 
