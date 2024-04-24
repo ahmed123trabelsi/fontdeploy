@@ -64,7 +64,7 @@ export class FormDialogComponent implements OnInit{
   
       const id = this.leads._id;
       // Utilisez this.leads._id pour récupérer l'identifiant
-      this.http.get<PaymentPolicy>(`http://localhost:3000/payment-policy/get/${id}`).subscribe(policy => {
+      this.http.get<PaymentPolicy>(`https://backdeploy-7y83.onrender.com/payment-policy/get/${id}`).subscribe(policy => {
         this.leads = policy;
         this.populateForm();
       });
@@ -113,14 +113,14 @@ export class FormDialogComponent implements OnInit{
         allowedDays: allowedDaysObject
       };
       if (this.action === 'ADD') {
-        this.http.post<PaymentPolicy>('http://localhost:3000/payment-policy', paymentPolicy)
+        this.http.post<PaymentPolicy>('https://backdeploy-7y83.onrender.com/payment-policy', paymentPolicy)
           .subscribe(
             response => console.log('Payment Policy created successfully:', response),
             error => console.error('Error while creating Payment Policy:', error)
           );
       } else if (this.action === 'EDIT') {
         const policyId = this.leads._id; // Utilisez this.leads._id pour l'identifiant de la politique de paiement
-        this.http.put<PaymentPolicy>(`http://localhost:3000/payment-policy/put/${policyId}`, paymentPolicy)
+        this.http.put<PaymentPolicy>(`https://backdeploy-7y83.onrender.com/payment-policy/put/${policyId}`, paymentPolicy)
           .subscribe(
             response => console.log('Payment Policy updated successfully:', response),
             error => console.error('Error while updating Payment Policy:', error)

@@ -33,7 +33,7 @@ export class PaymentPolicyComponent implements OnInit {
   }
 
   fetchPaymentPolicies(): void {
-    this.http.get<PaymentPolicy[]>('http://localhost:3000/payment-policy').subscribe(
+    this.http.get<PaymentPolicy[]>('https://backdeploy-7y83.onrender.com/payment-policy').subscribe(
       (data) => {
         this.paymentPolicies = data;
       },

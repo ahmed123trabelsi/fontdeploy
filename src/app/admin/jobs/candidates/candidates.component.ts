@@ -75,7 +75,7 @@ export class CandidatesComponent
   id?: string;
   candidates?: Candidates;
   jobTitles: { [key: string]: string } = {}; 
-  baseUrl: string = 'http://localhost:3000/files'; // URL de base de votre serveur
+  baseUrl: string = 'https://backdeploy-7y83.onrender.com/files'; // URL de base de votre serveur
   c!: number; // Déclaration de la variable i
   rol!: Candidates; 
   constructor(

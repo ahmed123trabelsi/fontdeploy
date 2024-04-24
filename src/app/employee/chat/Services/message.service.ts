@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MessageService {
-   apiUrl = 'http://localhost:3000/api/messages'
+   apiUrl = 'https://backdeploy-7y83.onrender.com/api/messages'
    private audio !: HTMLAudioElement;
 
   constructor(private http: HttpClient) { }

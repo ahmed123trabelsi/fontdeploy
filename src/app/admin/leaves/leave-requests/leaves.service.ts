@@ -8,7 +8,7 @@ import { UnsubscribeOnDestroyAdapter } from '@shared';
   providedIn: 'root',
 })
 export class LeavesService extends UnsubscribeOnDestroyAdapter {
-  private readonly API_URL = 'http://localhost:3000/Conge';
+  private readonly API_URL = 'https://backdeploy-7y83.onrender.com/Conge';
 
   isTblLoading = true;
   dataChange: BehaviorSubject<Leaves[]> = new BehaviorSubject<Leaves[]>([]);

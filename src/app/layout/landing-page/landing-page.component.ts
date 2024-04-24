@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Inject, NgModule, OnInit, Renderer2 } from '@angular/core';
-import { Router, RouterModule, RouterOutlet, Routes } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet, Routes } from '@angular/router';
 import { ServiceComponentComponent } from './service-component/service-component.component';
 import { JobsListService } from 'app/admin/jobs/jobs-list/jobs-list.service';
 import { JobsList } from 'app/admin/jobs/jobs-list/jobs-list.model';
@@ -25,8 +25,11 @@ const routes: Routes = [
 })
 export class LandingPageComponent implements AfterViewInit , OnInit   {
   userInput: string = '';
-  constructor(private chatS : ChatService , private fb: FormBuilder , private http: HttpClient) {
+  constructor(private chatS : ChatService , private fb: FormBuilder , private http: HttpClient,private r:Router) {
     
+  }
+  route(){
+    this.r.navigate(['authentication/signin'])
   }
   ngAfterViewInit(): void {
     const chatbox = document.querySelector('.chatbox__support');

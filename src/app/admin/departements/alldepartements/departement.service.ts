@@ -9,7 +9,7 @@ import { an } from "@fullcalendar/core/internal-common";
     providedIn: 'root',
   })
   export class EmployeesService extends UnsubscribeOnDestroyAdapter {
-    private readonly API_URL = 'http://localhost:3000/departements';
+    private readonly API_URL = 'https://backdeploy-7y83.onrender.com/departements';
     isTblLoading = true;
     dataChange: BehaviorSubject<Departement[]> = new BehaviorSubject<Departement[]>(
       []

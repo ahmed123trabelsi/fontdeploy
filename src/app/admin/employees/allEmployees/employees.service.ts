@@ -9,7 +9,7 @@ import { UnsubscribeOnDestroyAdapter } from '@shared';
 })
 export class EmployeesService extends UnsubscribeOnDestroyAdapter {
   
-  private apiUrl = 'http://localhost:3000/auth'; // Remplacez cette URL par l'URL de votre backend
+  private apiUrl = 'https://backdeploy-7y83.onrender.com/auth'; // Remplacez cette URL par l'URL de votre backend
 
   //private readonly API_URL = 'assets/data/employees.json';
   isTblLoading = true;

@@ -8,7 +8,7 @@ import { UnsubscribeOnDestroyAdapter } from '@shared';
   providedIn: 'root',
 })
 export class CandidatesService extends UnsubscribeOnDestroyAdapter {
-  private readonly API_URL = 'http://localhost:3000/application';
+  private readonly API_URL = 'https://backdeploy-7y83.onrender.com/application';
   downloadExcelUrl = `${this.API_URL}/download`;
   isTblLoading = true;
   dataChange: BehaviorSubject<Candidates[]> = new BehaviorSubject<Candidates[]>(

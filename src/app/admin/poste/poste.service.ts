@@ -8,7 +8,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PosteService extends UnsubscribeOnDestroyAdapter {
-  baseUrl = 'http://localhost:3000/post';
+  baseUrl = 'https://backdeploy-7y83.onrender.com/post';
  isTblLoading = true;
  dataChange: BehaviorSubject<Poste[]> = new BehaviorSubject<
    Poste[]
@@ -27,7 +27,7 @@ export class PosteService extends UnsubscribeOnDestroyAdapter {
  /** CRUD METHODS */
  getAllPoste(): any {
    this.subs.sink = this.httpClient
-     .get<Poste[]>('http://localhost:3000/post')
+     .get<Poste[]>('https://backdeploy-7y83.onrender.com/post')
      .subscribe({
        next: (data) => {
          this.isTblLoading = false;

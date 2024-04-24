@@ -11,7 +11,7 @@ export class MyLeavesService extends UnsubscribeOnDestroyAdapter {
   private leaves: any[] = [];
   public leavesSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
-  private readonly API_URL = 'http://localhost:3000/Conge';
+  private readonly API_URL = 'https://backdeploy-7y83.onrender.com/Conge';
   isTblLoading = true;
   dataChange: BehaviorSubject<MyLeaves[]> = new BehaviorSubject<MyLeaves[]>([]);
   // Temporarily stores data from dialogs

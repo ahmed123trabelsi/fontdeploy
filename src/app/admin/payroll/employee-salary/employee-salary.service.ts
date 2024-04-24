@@ -8,7 +8,7 @@ import { UnsubscribeOnDestroyAdapter } from '@shared';
   providedIn: 'root',
 })
 export class EmployeeSalaryService extends UnsubscribeOnDestroyAdapter {
-   baseUrl = 'http://localhost:3000/payroll';
+   baseUrl = 'https://backdeploy-7y83.onrender.com/payroll';
   isTblLoading = true;
   dataChange: BehaviorSubject<EmployeeSalary[]> = new BehaviorSubject<
     EmployeeSalary[]

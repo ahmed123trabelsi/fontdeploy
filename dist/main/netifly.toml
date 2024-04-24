@@ -1,0 +1,9 @@
+[build]
+  base = "/"
+  publish = "dist/main"
+  command = "npm i --force && ng build --configuration production"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200s

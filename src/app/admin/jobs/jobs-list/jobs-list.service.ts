@@ -8,8 +8,8 @@ import { UnsubscribeOnDestroyAdapter } from '@shared';
   providedIn: 'root',
 })
 export class JobsListService extends UnsubscribeOnDestroyAdapter {
-  private readonly API_URL = 'http://localhost:3000/job';
-  private readonly APII_URL = 'http://localhost:3000/skill';
+  private readonly API_URL = 'https://backdeploy-7y83.onrender.com/job';
+  private readonly APII_URL = 'https://backdeploy-7y83.onrender.com/skill';
   isTblLoading = true;
   dataChange: BehaviorSubject<JobsList[]> = new BehaviorSubject<JobsList[]>([]);
   // Temporarily stores data from dialogs

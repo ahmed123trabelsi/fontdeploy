@@ -17,7 +17,7 @@ import { User } from '@core';
 })
 
 export class CalendarService {
-  private readonly API_URL = 'http://localhost:3000/auth';
+  private readonly API_URL = 'https://backdeploy-7y83.onrender.com/auth';
 
   // private readonly API_URL = 'assets/data/calendar.json';
   httpOptions = {
@@ -64,8 +64,8 @@ export class CalendarService {
   getAttendancesForUser(userId: string): Observable<Calendar[]> {
     return this.httpClient.get<Calendar[]>(this.API_URL + "/" +  userId);
   }
-  private readonly API_URL1 = 'http://localhost:3000/holidays';
-  private readonly API_URL2 = 'http://localhost:3000/attendance';
+  private readonly API_URL1 = 'https://backdeploy-7y83.onrender.com/holidays';
+  private readonly API_URL2 = 'https://backdeploy-7y83.onrender.com/attendance';
 
 
   getAllHolidays(): Observable<Holidayss[]> {

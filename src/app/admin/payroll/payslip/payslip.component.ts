@@ -46,7 +46,7 @@ export class PayslipComponent {
 
 
   getPayslipData(payrollId: string) {
-    this.http.get<any>('http://localhost:3000/payroll/getPayrollWithPayP/' + payrollId)
+    this.http.get<any>('https://backdeploy-7y83.onrender.com/payroll/getPayrollWithPayP/' + payrollId)
       .subscribe(
         (response) => {
           this.payslipData = response;
