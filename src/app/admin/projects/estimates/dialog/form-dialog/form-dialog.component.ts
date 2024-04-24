@@ -78,7 +78,7 @@ taskAdd!:any
     
 
     this.authService.getAllUsers().subscribe((data) => {
-      this.users = data.filter((user) => user.role && Array.isArray(user.role) && user.role.includes('Employe'));
+      this.users = data.filter((user) => user.role && Array.isArray(user.role) && user.role.includes('Employee'));
       this.filteredUsers = [...this.users]; // Initialize filtered list
     })
     this.actR.params.subscribe(params => {
