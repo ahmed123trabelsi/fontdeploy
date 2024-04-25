@@ -104,7 +104,7 @@ export class AllemployeesComponent
       user => {        
       },
       error => {
-        console.error("Une erreur s'est produite lors de l'activation de l'utilisateur :", error);
+    
       }
     );
     this.ngOnInit ;
@@ -115,7 +115,7 @@ export class AllemployeesComponent
         this.ngOnInit ;
       },
       error => {
-        console.error("Une erreur s'est produite lors de l'activation de l'utilisateur :", error);
+ 
       }
     );
   }

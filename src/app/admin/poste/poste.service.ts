@@ -35,7 +35,7 @@ export class PosteService extends UnsubscribeOnDestroyAdapter {
        },
        error: (error: HttpErrorResponse) => {
          this.isTblLoading = false;
-         console.log(error.name + ' ' + error.message);
+      
        },
      });
  }
@@ -107,7 +107,7 @@ updatePoste(id: string, postData: Poste): Observable<Poste> {
 
 // Gestionnaire d'erreurs générique
 private handleError(error: any) {
-  console.error('Erreur API:', error);
+
   return throwError('Erreur serveur, veuillez réessayer plus tard.');
 }
 
@@ -121,7 +121,7 @@ getPosteByPostName(postName: string): Observable<Poste> {
   return this.httpClient.get<Poste>(url);
 }
  deleteEmployeeSalary(id: number): void {
-   console.log(id);
+
 
    // this.httpClient.delete(this.API_URL + id)
    //     .subscribe({

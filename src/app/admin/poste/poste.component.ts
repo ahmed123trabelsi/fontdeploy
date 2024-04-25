@@ -148,7 +148,7 @@ implements OnInit
       const index: number = this.dataSource.renderedData.findIndex(
         (d) => d === item
       );
-       console.log(this.dataSource.renderedData.findIndex((d) => d === item));
+     
       this.exampleDatabase?.dataChange.value.splice(index, 1);
 
       this.refreshTable();
@@ -181,10 +181,10 @@ implements OnInit
     this.posteService.getUsersWithoutPoste().subscribe(
       (users: UserWithoutPost[]) => {
         this.usersWithoutPoste = users;
-        console.log('Utilisateurs sans poste :', this.usersWithoutPoste); // Ajout du console.log
+
       },
       error => {
-        console.error('Erreur lors du chargement des utilisateurs sans poste :', error);
+      
         // Gestion de l'erreur
       }
     );
@@ -208,16 +208,16 @@ implements OnInit
   
   onUserSelectionChange(row: Poste): void {
     if (!row.Users || row.Users.length === 0) {
-        console.log('Aucun utilisateur sélectionné pour le poste avec ID', row._id);
+     
         return;
     }
 
     // Vérifier les propriétés des utilisateurs dans row.Users
-    console.log('Utilisateurs sélectionnés pour le poste avec ID', row._id, ':', row.Users);
+
 
     // Vérifier les IDs des utilisateurs
     const selectedUserIds = row.Users.map(user => user.id);
-    console.log('Ids des Utilisateurs sélectionnés pour le poste avec ID', row._id, ':', selectedUserIds);
+  
 }
 filteredPoste: any; // Vous pouvez déclarer filteredPoste avec le bon type, par exemple: Poste | undefined;
 
@@ -228,7 +228,7 @@ searchPoste() {
         this.filteredPoste = poste;
       },
       error: (error) => {
-        console.error('Erreur lors de la recherche du poste :', error);
+     
         this.filteredPoste = undefined;
       },
     });
@@ -244,8 +244,7 @@ searchPoste() {
       return;
     }
     const selectedUserIds = row.Users.map(user => user.id);
-    console.log('Utilisateurs sélectionnés pour le poste avec ID', row._id, ':', selectedUserIds); // Obtenir les IDs des utilisateurs sélectionnés
-  console.log('selectedUserIds',selectedUserIds);
+  
     this.posteService.assignUserToPost(selectedUserIds, row._id).subscribe(
       () => {
         this.snackBar.open('Utilisateur(s) affecté(s) avec succès au poste.', 'Fermer', { duration: 2000 });
@@ -255,7 +254,7 @@ searchPoste() {
         // Mettez ici le code pour rafraîchir votre liste de postes si nécessaire
       },
       (error: any) => {
-        console.error('Erreur lors de l\'affectation des utilisateurs au poste :', error);
+
         this.snackBar.open('Une erreur est survenue lors de l\'affectation des utilisateurs au poste.', 'Fermer', { duration: 2000 });
       }
     );
@@ -272,13 +271,13 @@ searchPoste() {
       if (result.isConfirmed) {
         this.posteService.deletePoste(postId).subscribe(
           () => {
-            console.log('Poste supprimé avec succès.');
+         
             this.refresh();
             // Supprimer l'élément de la liste locale
             // this.posteId.splice(index, 1);
           },
           error => {
-            console.error('Erreur lors de la suppression du poste:', error);
+         
             // Afficher un message d'erreur à l'utilisateur
           }
         );
@@ -330,7 +329,7 @@ searchPoste() {
           this.filteredPoste = poste;
         },
         error: (error) => {
-          console.error('Erreur lors de la recherche du poste :', error);
+
           this.filteredPoste = undefined;
         },
       });

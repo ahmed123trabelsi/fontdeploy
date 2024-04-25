@@ -46,6 +46,6 @@ export class AddPaymentComponent {
     });
   }
   onSubmit() {
-    console.log('Form Value', this.paymentForm.value);
+  
   }
 }

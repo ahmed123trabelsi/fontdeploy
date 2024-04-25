@@ -230,7 +230,7 @@ export class EmployeeSalaryComponent
       const index: number = this.dataSource.renderedData.findIndex(
         (d) => d === item
       );
-       console.log(this.dataSource.renderedData.findIndex((d) => d === item));
+   
       this.exampleDatabase?.dataChange.value.splice(index, 1);
 
       this.refreshTable();
@@ -246,7 +246,7 @@ export class EmployeeSalaryComponent
   generatePayroll(): void {
     this.employeeSalaryService.generatePayroll().subscribe(
       (response) => {
-        console.log(response);
+      
         Swal.fire({
           icon: 'success',
           title: 'Success!',
@@ -261,7 +261,7 @@ export class EmployeeSalaryComponent
             text: "Ce n'est pas le jour de paiement.",
           });
         } else {
-          console.error('Erreur lors de la planification de la paie:', error);
+    
           Swal.fire({
             icon: 'error',
             title: 'Erreur!',

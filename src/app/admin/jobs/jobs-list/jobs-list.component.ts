@@ -295,7 +295,7 @@ export class JobsListComponent
         // Vous pouvez effectuer d'autres actions ici après l'ajout réussi
         this.newSkill = {  name: '' }; // Réinitialiser le nouveau skill
       }, (error) => {
-        console.error('Error adding skill:', error);
+
         // Gérer l'erreur ici
       });
   }

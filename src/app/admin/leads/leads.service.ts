@@ -31,7 +31,7 @@ export class LeadsService extends UnsubscribeOnDestroyAdapter {
       },
       error: (error: HttpErrorResponse) => {
         this.isTblLoading = false;
-        console.log(error.name + ' ' + error.message);
+       
       },
     });
   }
@@ -61,7 +61,7 @@ export class LeadsService extends UnsubscribeOnDestroyAdapter {
     //     });
   }
   deleteLeads(id: number): void {
-    console.log(id);
+  
 
     // this.httpClient.delete(this.API_URL + id)
     //     .subscribe({

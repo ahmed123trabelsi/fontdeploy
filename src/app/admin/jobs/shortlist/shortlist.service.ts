@@ -33,7 +33,7 @@ export class ShortlistService extends UnsubscribeOnDestroyAdapter {
       },
       error: (error: HttpErrorResponse) => {
         this.isTblLoading = false;
-        console.log(error.name + ' ' + error.message);
+
       },
     });
   }
@@ -64,7 +64,7 @@ export class ShortlistService extends UnsubscribeOnDestroyAdapter {
     //     });
   }
   deleteShortlist(id: number): void {
-    console.log(id);
+
 
     // this.httpClient.delete(this.API_URL + id)
     //     .subscribe({

@@ -34,7 +34,7 @@ export class EstimatesService extends UnsubscribeOnDestroyAdapter {
       },
       error: (error: HttpErrorResponse) => {
         this.isTblLoading = false;
-        console.log(error.name + ' ' + error.message);
+    
       },
     });
   }

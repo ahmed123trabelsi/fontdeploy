@@ -103,7 +103,7 @@ export class SidebarComponent
         const userRole = userData.user.role;
         const firstName = userData?.user?.firstname || '';
         const lastName =  userData?.user?.lastname || '';
-        console.log(lastName);
+     
         this.userFullName = `${firstName} ${lastName}`;
         this.userImg =userData?.user.profileImage;
         if (userRole.includes('Admin')) {
@@ -120,11 +120,11 @@ export class SidebarComponent
           this.userType = 'Unknown';
         }
       } catch (error) {
-        console.error('Erreur lors du décodage du cookie:', error);
+     
         // Gérez les erreurs de décodage du cookie
       }
     } else {
-      console.error('Le cookie "user_data" n\'est pas défini');
+
       // Gérez le cas où le cookie n'est pas défini
     }
   

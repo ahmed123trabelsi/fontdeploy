@@ -97,7 +97,7 @@ export class AddEmployeeComponent {
           this.router.navigate(['/admin/employees/allEmployees']);
         },
         error: (error) => {
-          console.error("Une erreur s'est produite lors de l'inscription :", error);
+   
         }
       });
     } else {

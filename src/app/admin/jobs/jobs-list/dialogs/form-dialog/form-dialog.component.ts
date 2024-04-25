@@ -138,7 +138,7 @@ export class FormDialogComponent {
       .subscribe((skills: Skill[]) => {
         this.predefinedSkills = skills;
       }, (error) => {
-        console.error('Error loading skills:', error);
+     
         // Gérer l'erreur ici
       });
   }
@@ -255,7 +255,7 @@ export class FormDialogComponent {
         // Call the service method to add the new job
         this.jobsListService.addJob(newJobsList).subscribe({
           next: (response) => {
-            console.log('New job added successfully:', response);
+         
             Swal.fire({
               icon: 'success',
               title: 'Success',
@@ -265,7 +265,7 @@ export class FormDialogComponent {
             this.dialogRef.close(); // Close the dialog after successful addition
           },
           error: (error) => {
-            console.error('Error adding new job:', error);
+        
             Swal.fire({
               icon: 'error',
               title: 'Error',
@@ -294,7 +294,7 @@ export class FormDialogComponent {
         // Call the service method to update the existing job
         this.jobsListService.updateJob(updatedJobsList).subscribe({
           next: (response) => {
-            console.log('Job updated successfully:', response);
+        
             Swal.fire({
               icon: 'success',
               title: 'Updated',
@@ -305,7 +305,7 @@ export class FormDialogComponent {
             // this.JobsListComponent.refresh(); 
           },
           error: (error) => {
-            console.error('Error updating job:', error);
+         
             Swal.fire({
               icon: 'error',
               title: 'Error',
@@ -316,7 +316,7 @@ export class FormDialogComponent {
         });
       }
     } else {
-      console.error('Invalid form data. Please check the form.');
+
       Swal.fire({
         icon: 'error',
         title: 'Invalid Form',

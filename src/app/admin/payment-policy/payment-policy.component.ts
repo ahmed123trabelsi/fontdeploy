@@ -38,7 +38,7 @@ export class PaymentPolicyComponent implements OnInit {
         this.paymentPolicies = data;
       },
       (error) => {
-        console.error('Une erreur s\'est produite lors de la récupération des politiques de paiement : ', error);
+  
       }
     );
   }
@@ -63,7 +63,7 @@ export class PaymentPolicyComponent implements OnInit {
       });
     } else {
       // Gérer le cas où paymentPolicies est vide
-      console.error("No payment policies available for editing.");
+ 
     }
   }
   
@@ -74,12 +74,11 @@ export class PaymentPolicyComponent implements OnInit {
 
     this.fetchPaymentPolicies();
 
-    console.log('Fonction refresh() appelée');
+  
   }
 
   removeSelectedRows() {
-    // Implémentez la logique pour supprimer les lignes sélectionnées
-    console.log('Fonction removeSelectedRows() appelée');
+
   }
 
 }

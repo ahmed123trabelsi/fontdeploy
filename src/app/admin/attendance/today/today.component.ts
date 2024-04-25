@@ -68,7 +68,7 @@ export class TodayComponent
     this.loadData();
   }
   toggleStar(row: Today) {
-    console.log(row);
+  
   }
 
   public loadData() {

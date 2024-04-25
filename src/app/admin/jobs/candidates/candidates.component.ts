@@ -109,7 +109,7 @@ export class CandidatesComponent
         });
       },
       (error) => {
-        console.error('Error fetching job titles:', error);
+      
       }
     );
   }

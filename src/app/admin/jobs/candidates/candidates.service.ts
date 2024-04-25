@@ -47,7 +47,7 @@ updateCandidate(id: string, updateCandidateDto: any): Observable<any> {
   const url = `${this.API_URL}/${id}`; // Assurez-vous que l'URL correspond à votre endpoint backend
   return this.httpClient.put(url, updateCandidateDto).pipe(
     catchError((error) => {
-      console.error('Error updating candidate:', error);
+   
       throw error; // Gérer l'erreur dans le composant appelant si nécessaire
     })
   );
@@ -64,7 +64,7 @@ updateCandidate(id: string, updateCandidateDto: any): Observable<any> {
       },
       error: (error: HttpErrorResponse) => {
         this.isTblLoading = false;
-        console.log(error.name + ' ' + error.message);
+
       },
     });
   }
@@ -95,7 +95,7 @@ updateCandidate(id: string, updateCandidateDto: any): Observable<any> {
     //     });
   }
   deleteCandidates(id: number): void {
-    console.log(id);
+
     // this.httpClient.delete(this.API_URL + id)
     //     .subscribe({
     //       next: (data) => {

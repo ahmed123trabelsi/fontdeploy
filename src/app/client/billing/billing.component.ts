@@ -32,10 +32,10 @@ export class BillingComponent implements OnInit{
     this.canladerS.getAllEmployeesWithAttendances().subscribe(
       users => {
         this.employeesWithAttendances = users;
-        console.log(this.employeesWithAttendances); // Affiche les utilisateurs avec leurs présences dans la console
+   
       },
       error => {
-        console.error('Une erreur est survenue lors de la récupération des utilisateurs:', error);
+
       }
     );
   }
@@ -48,7 +48,7 @@ export class BillingComponent implements OnInit{
     this.canladerS.validatePresence(personnelId, attendances)
       .pipe(
         catchError(error => {
-          console.error('Une erreur est survenue:', error);
+
           // Gérez l'erreur selon vos besoins, par exemple affichez un message d'erreur à l'utilisateur
           return throwError('Une erreur est survenue lors de la validation de la présence.');
         })

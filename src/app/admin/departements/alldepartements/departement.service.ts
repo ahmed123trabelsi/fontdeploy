@@ -34,7 +34,7 @@ import { an } from "@fullcalendar/core/internal-common";
         },
         error: (error: HttpErrorResponse) => {
           this.isTblLoading = false;
-          console.log(error.name + ' ' + error.message);
+        
         },
       });
     }
@@ -42,7 +42,7 @@ import { an } from "@fullcalendar/core/internal-common";
       return this.httpClient.post(this.API_URL, departement).pipe(
         catchError((error: HttpErrorResponse) => {
           // Gérer les erreurs lors de l'ajout d'une entreprise
-          console.error('Error adding company:', error);
+         
           return throwError(error);
         })
       );
@@ -96,12 +96,12 @@ import { an } from "@fullcalendar/core/internal-common";
   
     return this.httpClient.put<Departement>(url, employees).pipe(
         tap((updatedEmployee: Departement) => {
-            console.log('Updated employee:', updatedEmployee);
+      
             this.dialogData = updatedEmployee; // Mettre à jour les données du dialogue avec les données mises à jour
         }),
         catchError((error: HttpErrorResponse) => {
             // Gérer les erreurs ici
-            console.error('Error updating employee', error);
+        
             throw error; // Renvoyer l'erreur pour la gérer dans le composant appelant si nécessaire
         })
     );

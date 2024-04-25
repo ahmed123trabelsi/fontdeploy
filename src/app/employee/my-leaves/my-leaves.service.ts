@@ -33,11 +33,11 @@ export class MyLeavesService extends UnsubscribeOnDestroyAdapter {
       next: (data) => {
         this.isTblLoading = false;
         this.dataChange.next(data);
-        console.log(data);
+    
       },
       error: (error: HttpErrorResponse) => {
         this.isTblLoading = false;
-        console.log(error.name + ' ' + error.message);
+
       },
     });
   }
@@ -53,11 +53,11 @@ export class MyLeavesService extends UnsubscribeOnDestroyAdapter {
     return this.httpClient.put<MyLeaves>(this.API_URL + '/' + id , myLeaves)
   }
   deleteMyLeaves(id: string): void {
-    console.log(id);
+
     this.httpClient.delete(this.API_URL + "/" +  id)
         .subscribe({
           next: (data) => {
-            console.log(id);
+      
           },
           error: (error: HttpErrorResponse) => {
              // error code here

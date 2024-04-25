@@ -95,7 +95,7 @@ userfinded!:any
       
       },
       error: (error) => {
-        console.error('Il y a eu une erreur lors de la récupération des tâches :', error);
+      
       }
     });
     this.retrieveUserData()
@@ -107,15 +107,15 @@ userfinded!:any
       try {
         const userData = JSON.parse(cookieData);
         this.user = userData.user; // Store user data in the component's variable
-        console.log(this.user.id); // You can now access user data within this component
+    
         this.auth.getUserById(this.user.id).subscribe((data)=>{this.userfinded=data;
-          console.log('dd',this.userfinded.tasks)
+  
         });
       } catch (error) {
-        console.error('Error decoding cookie:', error);
+       
       }
     } else {
-      console.error('Cookie "user_data" is not set');
+   
     }
   }
   refresh() {
@@ -139,7 +139,7 @@ this.ngOnInit()
       direction: tempDirection,
     });
     this.subs.sink =  dialogRef.afterClosed().subscribe(result => {
-      console.log('Le dialogue a été fermé.', result);
+  
       if (result) {
        
         this.tasks=result

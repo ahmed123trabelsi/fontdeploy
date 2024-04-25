@@ -235,7 +235,7 @@ removeSelectedRows() {
         },
         (error) => {
           // Gérez les erreurs de suppression
-          console.error('Erreur lors de la suppression des missions:', error);
+ 
         }
       );
     }

@@ -52,7 +52,7 @@ export class PayslipComponent {
           this.payslipData = response;
         },
         (error) => {
-          console.error('Error fetching payslip data:', error);
+     
         }
       );
   }

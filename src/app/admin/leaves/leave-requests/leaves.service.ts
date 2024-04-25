@@ -41,7 +41,7 @@ export class LeavesService extends UnsubscribeOnDestroyAdapter {
     this.dialogData = leaves;
   }
   deleteLeaves(id: number): void {
-    console.log(id);
+   
 
   }
 

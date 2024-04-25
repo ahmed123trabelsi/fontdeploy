@@ -115,15 +115,13 @@ export class FormDialogComponent implements OnInit{
       if (this.action === 'ADD') {
         this.http.post<PaymentPolicy>('https://backdeploy-7y83.onrender.com/payment-policy', paymentPolicy)
           .subscribe(
-            response => console.log('Payment Policy created successfully:', response),
-            error => console.error('Error while creating Payment Policy:', error)
+        
           );
       } else if (this.action === 'EDIT') {
         const policyId = this.leads._id; // Utilisez this.leads._id pour l'identifiant de la politique de paiement
         this.http.put<PaymentPolicy>(`https://backdeploy-7y83.onrender.com/payment-policy/put/${policyId}`, paymentPolicy)
           .subscribe(
-            response => console.log('Payment Policy updated successfully:', response),
-            error => console.error('Error while updating Payment Policy:', error)
+         
           );
       }
     }

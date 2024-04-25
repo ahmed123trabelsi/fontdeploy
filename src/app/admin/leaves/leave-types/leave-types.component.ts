@@ -74,7 +74,7 @@ export class LeaveTypesComponent
     this.loadData();
   }
   toggleStar(row: LeaveTypes) {
-    console.log(row);
+ 
   }
 
   public loadData() {

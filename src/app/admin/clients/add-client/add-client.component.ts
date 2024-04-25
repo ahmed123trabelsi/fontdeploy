@@ -52,6 +52,6 @@ export class AddClientComponent {
     });
   }
   onSubmit() {
-    console.log('Form Value', this.clientForm.value);
+  
   }
 }

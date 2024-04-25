@@ -39,7 +39,7 @@ export class LandingPageComponent implements AfterViewInit , OnInit   {
           chatbox.classList.toggle('chatbox--active'); 
       });
     } else {
-      console.error('Unable to find chatbox or openChatboxBtn elements.');
+
     }
   }
   ngOnInit(): void {
@@ -64,7 +64,7 @@ sendMessage() {
       // Réinitialiser le champ de saisie après l'envoi du message
       newMessageControl.reset();
     }, error => {
-      console.error('Error:', error);
+     
     });
   }
 }

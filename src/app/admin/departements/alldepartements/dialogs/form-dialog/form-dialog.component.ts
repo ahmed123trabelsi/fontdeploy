@@ -48,12 +48,12 @@ export class FormDialogComponent implements OnInit {
   ) {
     
     this.employeesForm = new UntypedFormGroup({});
-    console.log('Employee ID:', data.id);
+  
     // Set the defaults
     this.action = data.action;
     if (this.action === 'edit' && this.data.id) {
       this.employeesService.getDepartementById(data.id).subscribe(employee => {
-        console.log(employee);
+    
         employee.name = employee.name.toUpperCase();
         this.dialogTitle = employee.name;
         this.employees = employee;
@@ -95,7 +95,7 @@ export class FormDialogComponent implements OnInit {
   })
   if (this.action === 'edit' && this.data.id) {
     this.employeesService.getDepartementById(this.data.id).subscribe(employee => {
-      console.log(employee);
+   
       employee.name = employee.name.toUpperCase();
       this.dialogTitle = employee.name;
       this.employees = employee;
@@ -156,20 +156,20 @@ export class FormDialogComponent implements OnInit {
   submit() {
     // emppty stuff
     if (this.action === 'edit') {
-      console.log("sss",this.employeesForm.value)
+      
       const updatedEmployeeData = this.employeesForm.getRawValue(); // Récupérer les données du formulaire modifié
 
       // Appeler la méthode update du service EmployeeService pour mettre à jour les données de l'employé
       this.employeesService.updateEmployees(updatedEmployeeData).subscribe(
           (response) => {
              
-              console.log('Employee updated successfully', response);
+          
               this.dialogRef.close(); 
               alert('Updated successfully');// Fermer le dialogue après la mise à jour réussie
           },
           (error) => {
               // Gérer les erreurs de la requête de mise à jour si nécessaire
-              console.error('Error updating employee', error);
+          
           }
       );
   }
@@ -186,13 +186,13 @@ export class FormDialogComponent implements OnInit {
     this.employeesService.addDepartement(departmentData).subscribe(
       (response) => {
         // Gérer la réponse de la méthode addDepartement si nécessaire
-        console.log('Department added successfully', response);
+       
         this.dialogRef.close();
         alert('Department added successfully');
       },
       (error) => {
         // Gérer les erreurs de la méthode addDepartement si nécessaire
-        console.error('Error adding department', error);
+      
       }
     );
   }

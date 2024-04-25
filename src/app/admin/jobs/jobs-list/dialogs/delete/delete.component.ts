@@ -43,12 +43,12 @@ export class DeleteDialogComponent {
     this.jobsListService.deleteJob(jobId).subscribe(
       () => {
         // Gérer la suppression réussie
-        console.log('Job deleted successfully');
+       
         // Rafraîchir la liste des jobs si nécessaire
       },
       (error) => {
         // Gérer les erreurs de suppression
-        console.error('Error deleting job:', error);
+     
       }
     );
   }

@@ -48,7 +48,7 @@ export class MissionService extends UnsubscribeOnDestroyAdapter {
   addMission(missions: Mission): void {
     this.dialogData = missions;
 
-    console.log(this.getTokenFromCookie());
+  
   }
   deleteMission(missionId: string): Observable<void> {
    const url = `${this.baseUrl}/${missionId}`;
@@ -67,7 +67,7 @@ deleteMultipleMissions(missionIds: (string | undefined)[]): Observable<void> {
 
 getAllMissions():  void {
   const clientId = this.getTokenFromCookie();
-  console.log(clientId);
+ 
 
   
   if (!clientId) {
@@ -81,7 +81,7 @@ getAllMissions():  void {
       },
       error: (error: HttpErrorResponse) => {
         this.isTblLoading = false;
-        console.log(error.name + ' ' + error.message);
+     
       },
     });
   }
@@ -95,7 +95,7 @@ getAllMissions():  void {
 getTokenFromCookie(): string | null {
   if (this.cookieService.check('token')) {
     let s =this.cookieService.get('token');
-    console.log(s);
+ 
     return s;
   } else {
     return null; 

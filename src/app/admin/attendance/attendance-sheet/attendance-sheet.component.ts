@@ -52,7 +52,7 @@ export class AttendanceSheetComponent implements OnInit {
         this.users = users; 
       },
       error: (error) => {
-        console.error('Error fetching users with attendances:', error); 
+     
       }
     });
   }

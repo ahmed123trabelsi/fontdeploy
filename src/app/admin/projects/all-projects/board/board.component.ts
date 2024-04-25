@@ -67,13 +67,13 @@ export class BoardComponent implements OnInit {
         const userData = JSON.parse(cookieData);
         this.user = userData.user; // Store user data in the component's variable
         this.auth.getUserById(this.user.id).subscribe((data)=>{this.userfinded=data;
-          console.log('dd',this.userfinded.projects)
+      
         });
       } catch (error) {
-        console.error('Error decoding cookie:', error);
+
       }
     } else {
-      console.error('Cookie "user_data" is not set');
+    
     }
   }
   

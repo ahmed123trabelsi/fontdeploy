@@ -63,7 +63,7 @@ export class AddDepartementComponent {
       this.companyService.addDepartement(companyData).subscribe(
         response => {
           // Gérer la réponse du backend après l'ajout de l'entreprise
-          console.log('Company added successfully!', response);
+        
           // Réinitialisez le formulaire après l'ajout réussi
           this.docForm.reset();
           // Afficher une alerte avec SweetAlert

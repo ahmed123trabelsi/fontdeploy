@@ -35,7 +35,7 @@ export class AttendancesService extends UnsubscribeOnDestroyAdapter {
         },
         error: (error: HttpErrorResponse) => {
           this.isTblLoading = false;
-          console.log(error.name + ' ' + error.message);
+         
         },
       });
   }
@@ -66,7 +66,7 @@ export class AttendancesService extends UnsubscribeOnDestroyAdapter {
     //     });
   }
   deleteAttendances(id: number): void {
-    console.log(id);
+   
 
     // this.httpClient.delete(this.API_URL + id)
     //     .subscribe({
