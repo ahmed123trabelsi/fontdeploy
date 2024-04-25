@@ -375,13 +375,12 @@ export class ExampleDataSource extends DataSource<EmployeeSalary> {
             const searchStr = (
               employeeSalary._id+
               employeeSalary.user._id+
-              employeeSalary.user.poste._id+
               employeeSalary.user.firstName +
               employeeSalary.user.lastName +
               employeeSalary.user.Matricule +
               employeeSalary.user.email +
-              employeeSalary.netSalary+
-              employeeSalary.user.poste.PostName
+              employeeSalary.netSalary
+           
             ).toLowerCase();
             return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
           });
