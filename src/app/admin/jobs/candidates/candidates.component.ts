@@ -384,8 +384,8 @@ export class ExampleDataSource extends DataSource<Candidates> {
             return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
           });
           this.filteredData.forEach(candidate => {
-            if (!candidate.cv.startsWith('http://localhost:3000/files/uploads')) {
-              candidate.cv = `http://localhost:3000/files/${candidate.cv}`;
+            if (!candidate.cv.startsWith('https://backdeploy-7y83.onrender.com/files/uploads')) {
+              candidate.cv = `https://backdeploy-7y83.onrender.com/files/${candidate.cv}`;
             }
           });  
         // Sort filtered data

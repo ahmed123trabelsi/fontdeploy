@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
+import { CookieService } from 'ngx-cookie-service';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -26,6 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { AuthService } from '@core/service/auth.service';
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -64,6 +66,8 @@ export type ChartOptions = {
   ],
 })
 export class MainComponent implements OnInit {
+  user!:any
+  userfinded: any ;
   public areaChartOptions!: Partial<ChartOptions>;
   public barChartOptions!: Partial<ChartOptions>;
   public projectOptions!: Partial<ChartOptions>;
@@ -73,7 +77,9 @@ export class MainComponent implements OnInit {
   public smallChart4Options!: Partial<ChartOptions>;
   public performanceRateChartOptions!: Partial<ChartOptions>;
 
-  constructor() {
+  constructor(  private cookieService:CookieService,
+    private auth:AuthService
+  ) {
     // constructor code
   }
   ngOnInit() {
@@ -85,10 +91,30 @@ export class MainComponent implements OnInit {
     this.chart2();
     this.chart4();
     this.projectChart();
+    this.retrieveUserData()
   }
 
-  // Doughnut chart start
 
+
+
+  // Doughnut chart start
+  retrieveUserData() {
+    const cookieData = this.cookieService.get('user_data');
+    if (cookieData) {
+      try {
+        const userData = JSON.parse(cookieData);
+        this.user = userData.user; // Store user data in the component's variable
+    
+        this.auth.getUserById(this.user.id).subscribe((data)=>{this.userfinded=data;
+  
+        });
+      } catch (error) {
+       
+      }
+    } else {
+   
+    }
+  }
   public doughnutChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     maintainAspectRatio: false,
