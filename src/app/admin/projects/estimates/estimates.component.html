@@ -37,19 +37,8 @@
                       </button>
                     </div>
                   </li>
-                  <li class="tbl-header-btn">
-                    <div class="m-l-10" [hidden]=!selection.hasValue() matTooltip="DELETE">
-                      <button mat-mini-fab color="warn" (click)="removeSelectedRows()">
-                        <mat-icon class="col-white">delete
-                        </mat-icon>
-                      </button>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="export-button m-l-10" matTooltip="XLSX">
-                      <img src="assets/images/icons/xlsx.png" alt="" (click)="exportExcel()" />
-                    </div>
-                  </li>
+                  
+            
                 </ul>
               </div>
             </div>
@@ -57,19 +46,7 @@
               <div class="responsive_table">
                 <table mat-table [dataSource]="dataSource2" matSort class="mat-cell advance-table">
                   <!-- Checkbox Column -->
-                  <ng-container matColumnDef="select">
-                    <mat-header-cell *matHeaderCellDef [ngClass]="'tbl-col-width-per-6'">
-                      <mat-checkbox (change)="$event ? masterToggle() : null"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()" [ngClass]="'tbl-checkbox'">
-                      </mat-checkbox>
-                    </mat-header-cell>
-                    <mat-cell *matCellDef="let row" [ngClass]="'tbl-col-width-per-6'">
-                      <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)" [ngClass]="'tbl-checkbox'">
-                      </mat-checkbox>
-                    </mat-cell>
-                  </ng-container>
+           
                   <!-- ID Column -->
              
                   <ng-container matColumnDef="NomTask">

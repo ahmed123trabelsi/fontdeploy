@@ -9,6 +9,7 @@ import { UnsubscribeOnDestroyAdapter } from '@shared';
 })
 export class CandidatesService extends UnsubscribeOnDestroyAdapter {
   private readonly API_URL = 'https://backdeploy-7y83.onrender.com/application';
+  private apiUrl = 'https://backdeploy-7y83.onrender.com/application/generate';
   downloadExcelUrl = `${this.API_URL}/download`;
   isTblLoading = true;
   dataChange: BehaviorSubject<Candidates[]> = new BehaviorSubject<Candidates[]>(
@@ -106,4 +107,7 @@ updateCandidate(id: string, updateCandidateDto: any): Observable<any> {
     //       },
     //     });
   }
+  generateCv(cvData: any): Observable<Blob> {
+    return this.httpClient.post<Blob>(this.apiUrl, cvData, { responseType: 'blob' as 'json' });
+}
 }

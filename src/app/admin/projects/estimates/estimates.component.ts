@@ -71,7 +71,7 @@ export class EstimatesComponent
   tasks: TasksModel[] = [];
   columns: string[] = ['NomTask', 'description', 'statut', 'priority','FinishDate','startDate','actions'];
   exampleDatabase?: EstimatesService;
-  dataSource!: ExampleDataSource;
+
   selection = new SelectionModel<TasksModel>(true, []);
   index?: number;
   id?: string;
@@ -211,56 +211,11 @@ this.ngOnInit()
     });
   }
 
-  /** Whether the number of selected elements matches the details number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.renderedData.length;
-    return numSelected === numRows;
-  }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected()
-      ? this.selection.clear()
-      : this.dataSource.renderedData.forEach((row) =>
-          this.selection.select(row)
-        );
-  }
-  removeSelectedRows() {
-    const detailsSelect = this.selection.selected.length;
-    this.selection.selected.forEach((item) => {
-      const index: number = this.dataSource.renderedData.findIndex(
-        (d) => d === item
-      );
-      // console.log(this.dataSource.renderedData.findIndex((d) => d === item));
-      this.exampleDatabase?.dataChange.value.splice(index, 1);
-     
-      this.selection = new SelectionModel<TasksModel>(true, []);
-    });
-    this.showNotification(
-      'snackbar-danger',
-      detailsSelect + ' Record Delete Successfully...!!!',
-      'bottom',
-      'center'
-    );
-  }
+
 
   // export table data in excel file
-  exportExcel() {
-    // key name with space add in brackets
-    const exportData: Partial<TableElement>[] =
-      this.dataSource.filteredData.map((x) => ({
-        NomTask: x.NomTask,
-        description: x.description,
-        startDate: x.startDate?.toISOString(), // Convert Date to string
-        FinishDate: x.FinishDate?.toISOString(), 
-        priority: x.priority,
-        statut: x.statut,
-  
-      }));
 
-    TableExportUtil.exportToExcel(exportData, 'excel');
-  }
 
   showNotification(
     colorName: string,
@@ -275,101 +230,4 @@ this.ngOnInit()
       panelClass: colorName,
     });
   }
-}
-export class ExampleDataSource extends DataSource<any> {
-  filterChange = new BehaviorSubject('');
-
-  get filter(): string {
-    return this.filterChange.value;
-  }
-  set filter(filter: string) {
-    this.filterChange.next(filter);
-  }
-  filteredData: TasksModel[] = [];
-  renderedData: TasksModel[] = [];
-  constructor(
-    public exampleDatabase: EstimatesService,
-    public paginator: MatPaginator,
-    public _sort: MatSort
-  ) {
-    super();
-    // Reset to the first page when the user changes the filter.
-    this.filterChange.subscribe(() => (this.paginator.pageIndex = 0));
-  }
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<any[]> {
-    // Listen for any changes in the base data, sorting, filtering, or pagination
-    const displayDataChanges = [
-      this.exampleDatabase.dataChange,
-      this._sort.sortChange,
-      this.filterChange,
-      this.paginator.page,
-    ];
-    this.exampleDatabase.getTasks();
-    return merge(...displayDataChanges).pipe(
-      map(() => {
-        // Filter data
-        this.filteredData = this.exampleDatabase.data
-          .slice()
-          .filter((estimates: TasksModel) => {
-            const searchStr = (
-              estimates.NomTask+
-              estimates.description+
-              estimates.startDate+
-              estimates.FinishDate 
-            ).toLowerCase();
-            return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
-          });
-        // Sort filtered data
-        const sortedData = this.sortData(this.filteredData.slice());
-        // Grab the page's slice of the filtered sorted data.
-        const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-        this.renderedData = sortedData.splice(
-          startIndex,
-          this.paginator.pageSize
-        );
-        return this.renderedData;
-      })
-    );
-  }
-  disconnect() {
-    //disconnect
-  }
-  /** Returns a sorted copy of the database data. */
-  sortData(data: any[]): any[] {
-    if (!this._sort.active || this._sort.direction === '') {
-      return data;
-    }
-    return data.sort((a, b) => {
-      let propertyA: number | string = '';
-      let propertyB: number | string = '';
-      switch (this._sort.active) {
-        case 'id':
-          [propertyA, propertyB] = [a.id, b.id];
-          break;
-        case 'cName':
-          [propertyA, propertyB] = [a.cName, b.cName];
-          break;
-        case 'estDate':
-          [propertyA, propertyB] = [a.estDate, b.estDate];
-          break;
-        case 'country':
-          [propertyA, propertyB] = [a.country, b.country];
-          break;
-        case 'expDate':
-          [propertyA, propertyB] = [a.expDate, b.expDate];
-          break;
-        case 'status':
-          [propertyA, propertyB] = [a.status, b.status];
-          break;
-      }
-      const valueA = isNaN(+propertyA) ? propertyA : +propertyA;
-      const valueB = isNaN(+propertyB) ? propertyB : +propertyB;
-      return (
-        (valueA < valueB ? -1 : 1) * (this._sort.direction === 'asc' ? 1 : -1)
-      );
-    });
-  }
-
-
 }

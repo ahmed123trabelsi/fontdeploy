@@ -73,7 +73,7 @@ export class FormdialogComponentComponent implements OnInit {
     this.contactForm = this.createContactForm();
     this.jobId = data.jobId;
     this.jobTitle = data.jobTitle;
-  
+    console.log('Job Title:', this.jobTitle);
   }
  
   formControl = new UntypedFormControl('', [
@@ -120,7 +120,7 @@ export class FormdialogComponentComponent implements OnInit {
   }
   getCvPath(): string {
     // Vérifiez si le candidat a un CV et retournez le chemin approprié
-    return this.candidates.cv ? `file:///${this.candidates.cv}` : ''; // Modifiez ceci pour ajuster le format du chemin si nécessaire
+    return this.candidates.cv ? `file:///${this.candidates.cv} `: ''; // Modifiez ceci pour ajuster le format du chemin si nécessaire
   }
 //   onJobSelect(jobId: string): void {
 //     // Vérifier si la liste des jobs est chargée
@@ -159,7 +159,7 @@ onJobSelect(jobId: string): void {
         this.jobs = jobs.filter(job => job.status === 'Open');
       },
       (error) => {
-      
+        console.error('Error fetching jobs:', error);
       }
     );
   }
@@ -177,7 +177,7 @@ onJobSelect(jobId: string): void {
   public confirmAdd(): void {
     if (this.contactForm && this.contactForm.valid && this.cvFile) {
       const jobId = this.contactForm.get('jobId')!.value;
-  
+      console.log('Job ID:', jobId);
       if (jobId) { // Vérifiez si l'ID du job est défini
         const formData = new FormData();
         formData.append('candidateName', this.contactForm.get('candidateName')!.value);
@@ -188,17 +188,17 @@ onJobSelect(jobId: string): void {
         // Appelez la méthode d'ajout du service avec les données du formulaire
         this.candidatesService.applyforjob(formData).subscribe(
           (response) => {
-       
+            console.log('Application submitted successfully:', response);
             alert('Application submitted successfully!');
             this.dialogRef.close(true); // Fermer le dialogue après l'ajout réussi
           },
           (error) => {
-
+            console.error('Error submitting application:', error);
             // Gérer les erreurs d'ajout
           }
         );
       } else {
-   
+        console.error('Error: Job ID is null');
         // Gérer le cas où l'ID du job est null
       }
     }
